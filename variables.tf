@@ -6,8 +6,12 @@ variable "env" {
   default = "dev"
 }
 
+variable "namespace" {
+  default = "teste"
+}
+
 variable "beanstalk_application_name" {
-  default = "teste55"
+  default = "beanstalk-application"
 }
 
 variable "beanstalk_application_description" {
@@ -15,7 +19,7 @@ variable "beanstalk_application_description" {
 }
 
 variable "beanstalk_env_name" {
-  default = "teste55env"
+  default = "beanstalk_env"
 }
 
 variable "autoscale_max" {
@@ -37,28 +41,28 @@ variable "instance_type" {
 }
 
 variable "api_gateway_vpc_link_name" {
-  type        = string
-  default     = "testevpclink"
+  type    = string
+  default = "api-gateway-vpc-link"
 }
 
 variable "api_gateway_vpc_link_description" {
-  type        = string
-  default     = "testevpclink desc"
+  type    = string
+  default = "testevpclink desc"
 }
 
 variable "api_gateway_rest_api_name" {
-  type        = string
-  default     = "api-b2c-teste"
+  type    = string
+  default = "api-gateway-rest"
 }
 
 variable "api_gateway_rest_api_description" {
-  type        = string
-  default     = "Descrição api Rest"
+  type    = string
+  default = "Descrição api Rest"
 }
 
 variable "api_gateway_rest_api_endpoint_configuration" {
-  type        = string
-  default     = "REGIONAL"
+  type    = string
+  default = "REGIONAL"
 }
 
 

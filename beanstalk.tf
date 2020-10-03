@@ -25,7 +25,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
     name      = "ELBSubnets"
     value     = "subnet-037442b3e87386087,subnet-006229926488f0e62"
   }
-  
+
   setting {
     namespace = "aws:elasticbeanstalk:environment"
     name      = "LoadBalancerType"
@@ -39,7 +39,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
     resource  = ""
   }
 
- setting {
+  setting {
     namespace = "aws:autoscaling:asg"
     name      = "MinSize"
     value     = var.autoscale_min
@@ -55,8 +55,8 @@ resource "aws_elastic_beanstalk_environment" "default" {
 
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
-    name = "IamInstanceProfile"
-    value = "aws-elasticbeanstalk-ec2-role"
+    name      = "IamInstanceProfile"
+    value     = "aws-elasticbeanstalk-ec2-role"
   }
-  
+
 }
