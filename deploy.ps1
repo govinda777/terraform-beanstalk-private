@@ -4,7 +4,7 @@ Write-Host "----------------------------------------"
 
 $ENV="dev"
 
-$namespace="teste66"
+$namespace="luan"
 $beanstalk_application_name="eb-app-$($namespace)"
 $beanstalk_env_name="eb-env-$($namespace)"
 $api_gateway_vpc_link_name="api-gat-vpc-link-$($namespace)"
@@ -30,11 +30,11 @@ Write-Host "Validating terraform files"
 terraform validate
 Write-Host "----------------------------------------"
 Write-Host "Planning..."
-terraform plan -var namespace=$namespace -var beanstalk_application_name=$beanstalk_application_name -var beanstalk_env_name=$beanstalk_env_name -var api_gateway_vpc_link_name=$api_gateway_vpc_link_name -var api_gateway_rest_api_name=$api_gateway_rest_api_name -out="plan.tfout"
+terraform plan -var-file="$($ENV)/terraform.tfvars" -var namespace=$namespace -var beanstalk_application_name=$beanstalk_application_name -var beanstalk_env_name=$beanstalk_env_name -var api_gateway_vpc_link_name=$api_gateway_vpc_link_name -var api_gateway_rest_api_name=$api_gateway_rest_api_name -out="plan.tfout"
 Write-Host "----------------------------------------"
 Write-Host "Applying..."
-terraform apply plan.tfout
+#terraform apply plan.tfout
 Write-Host "----------------------------------------"
 Write-Host "Cleaning up plan file"
-Remove-Item -Path plan.tfout
+#Remove-Item -Path plan.tfout
 Write-Host "----------------------------------------"

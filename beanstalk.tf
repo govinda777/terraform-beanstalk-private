@@ -11,19 +11,19 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    value     = "vpc-0811fece14e24728f"
+    value     = var.beanstalk_env_vpc
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = "subnet-037442b3e87386087,subnet-006229926488f0e62"
+    value     = var.beanstalk_env_ec2_subnet
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = "subnet-037442b3e87386087,subnet-006229926488f0e62"
+    value     = var.beanstalk_env_ec2_subnet
   }
 
   setting {

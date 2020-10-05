@@ -22,6 +22,18 @@ variable "beanstalk_env_name" {
   default = "beanstalk_env"
 }
 
+variable "beanstalk_env_vpc" {
+  default = ""
+}
+
+variable "beanstalk_env_ec2_subnet" {
+  default = ""
+}
+
+variable "beanstalk_env_elb_subnet" {
+  default = ""
+}
+
 variable "autoscale_max" {
   type        = number
   default     = 3
