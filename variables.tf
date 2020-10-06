@@ -52,6 +52,8 @@ variable "instance_type" {
   description = "Instances type"
 }
 
+########## Api Gateway #############
+
 variable "api_gateway_vpc_link_name" {
   type    = string
   default = "api-gateway-vpc-link"
@@ -77,4 +79,20 @@ variable "api_gateway_rest_api_endpoint_configuration" {
   default = "REGIONAL"
 }
 
+########## Redis #############
+
+variable "elasticache_cluster_name" {
+  type    = string
+  default = "elasticache_cluster_name"
+}
+
+variable "elasticache_cluster_node_type" {
+  type    = string
+  default = "cache.m4.large"
+}
+
+variable "elasticache_cluster_num_cache_nodes" {
+  type    = number
+  default = 2
+}
 
