@@ -1,6 +1,9 @@
+
 resource "aws_elastic_beanstalk_application" "default" {
   name        = var.beanstalk_application_name
   description = var.beanstalk_application_description
+
+  tags = merge({ Name = "${local.app_name}-beanstalk-app" }, local.tags)
 }
 
 resource "aws_elastic_beanstalk_environment" "default" {
@@ -11,19 +14,19 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
-    value     = var.beanstalk_env_vpc
+    value     = aws_vpc.default.id
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = var.beanstalk_env_ec2_subnet
+    value     = join(",", aws_subnet.private.*.id)
   }
 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBSubnets"
-    value     = var.beanstalk_env_ec2_subnet
+    value     = join(",", aws_subnet.private.*.id)
   }
 
   setting {
@@ -59,4 +62,5 @@ resource "aws_elastic_beanstalk_environment" "default" {
     value     = "aws-elasticbeanstalk-ec2-role"
   }
 
+  tags = merge({ Name = "${local.app_name}-beanstalk-env" }, local.tags)
 }

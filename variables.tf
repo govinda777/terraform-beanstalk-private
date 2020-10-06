@@ -6,9 +6,53 @@ variable "env" {
   default = "dev"
 }
 
-variable "namespace" {
-  default = "teste"
+variable "app_name" {
+  default = "mantis"
 }
+
+######## VPC ########
+
+variable "vpc_cidr_block" {
+  type        = string
+  default     = "10.0.1.0/24"
+  description = "Range IP"
+}
+
+variable "vpc_name" {
+  type        = string
+  default     = "Mantis VPC"
+  description = "VPC Tag name"
+}
+
+#######################
+
+######## Subnet ########
+
+variable "subnet_a_cidr_block" {
+  type        = string
+  default     = "10.0.1.0/24"
+  description = "Subnet cidr block"
+}
+
+variable "subnet_b_cidr_block" {
+  type        = string
+  default     = "10.0.1.0/24"
+  description = "Subnet cidr block"
+
+}
+
+variable "subnet_c_cidr_block" {
+  type        = string
+  default     = "10.0.1.0/24"
+  description = "Subnet cidr block"
+}
+
+#######################
+
+variable "az_count" {
+  default = 2
+}
+
 
 variable "beanstalk_application_name" {
   default = "beanstalk-application"
@@ -20,10 +64,6 @@ variable "beanstalk_application_description" {
 
 variable "beanstalk_env_name" {
   default = "beanstalk_env"
-}
-
-variable "beanstalk_env_vpc" {
-  default = ""
 }
 
 variable "beanstalk_env_ec2_subnet" {
@@ -81,18 +121,18 @@ variable "api_gateway_rest_api_endpoint_configuration" {
 
 ########## Redis #############
 
-variable "elasticache_cluster_name" {
+variable "elasticache_replication_group_id" {
   type    = string
-  default = "elasticache_cluster_name"
+  default = "redis-group"
 }
 
-variable "elasticache_cluster_node_type" {
+variable "elasticache_replication_group_description" {
   type    = string
-  default = "cache.m4.large"
+  default = "elasticache_replication_group_description"
 }
 
-variable "elasticache_cluster_num_cache_nodes" {
+variable "elasticache_replication_group_port" {
   type    = number
-  default = 2
+  default = 3389
 }
 

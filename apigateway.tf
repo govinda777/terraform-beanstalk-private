@@ -1,8 +1,11 @@
+
 resource "aws_api_gateway_vpc_link" "default" {
   name        = var.api_gateway_vpc_link_name
   description = var.api_gateway_vpc_link_description
   depends_on  = [aws_elastic_beanstalk_environment.default]
   target_arns = [aws_elastic_beanstalk_environment.default.load_balancers[0]]
+
+  tags = merge({ Name = "${local.app_name}-vpc-link" }, local.tags)
 }
 
 resource "aws_api_gateway_rest_api" "default" {
@@ -12,6 +15,8 @@ resource "aws_api_gateway_rest_api" "default" {
   endpoint_configuration {
     types = [var.api_gateway_rest_api_endpoint_configuration]
   }
+
+  tags = merge({ Name = "${local.app_name}-api-gw" }, local.tags)
 }
 
 resource "aws_api_gateway_resource" "default" {

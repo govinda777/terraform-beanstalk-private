@@ -1,8 +1,9 @@
+
 resource "aws_elasticache_replication_group" "default" {
-  replication_group_id          = var.elasticache_cluster_name
-  replication_group_description = var.elasticache_cluster_description
+  replication_group_id          = var.elasticache_replication_group_id
+  replication_group_description = var.elasticache_replication_group_description
   node_type                     = "cache.t2.small"
-  port                          = 3389
+  port                          = var.elasticache_replication_group_port
   parameter_group_name          = "default.redis3.2.cluster.on"
   automatic_failover_enabled    = true
 
@@ -10,4 +11,6 @@ resource "aws_elasticache_replication_group" "default" {
     replicas_per_node_group = 1
     num_node_groups         = 2
   }
+
+  tags = merge({ Name = "${local.app_name}-redis" }, local.tags)
 }

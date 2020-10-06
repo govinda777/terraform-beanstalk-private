@@ -1,3 +1,4 @@
+
 output "beanstalk_id" {
   description = "beanstalk_id"
   value       = aws_elastic_beanstalk_environment.default.id
